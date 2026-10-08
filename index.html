@@ -335,7 +335,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--brown-700);
+    color: var(--brown-500);
     cursor: pointer;
     padding: 0;
     flex-shrink: 0;
@@ -347,11 +347,40 @@ body {
     .drawer-header__close:hover {
         background: transparent;
         border-color: transparent;
-        color: var(--brown-700);
+        color: var(--brown-600);
         transform: none;
     }
 }
-.drawer-header__close svg { width: 18px; height: 18px; }
+
+/* ------------------------------------------------------------
+   X DO MENU — mesmo tamanho do símbolo hambúrguer
+   O hambúrguer ocupa 24px de largura x 16px de altura com barras de
+   2px. O X é montado com duas barras iguais às do hambúrguer
+   (2px de espessura, raio 2px, mesma cor) giradas em ±45°.
+   Cada barra mede 28,3px = diagonal de um quadrado de 20px, então o X
+   ocupa exatamente 20px x 20px — praticamente a mesma caixa do
+   hambúrguer (24x16), ficando os dois ícones do mesmo tamanho.
+   Para mudar o tamanho do X, altere apenas --x-bar abaixo.
+   ------------------------------------------------------------ */
+.drawer-header__close-icon {
+    --x-bar: 28.3px;   /* comprimento de cada barra do X (20px x raiz de 2) */
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+.drawer-header__close-icon span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--x-bar);
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: background 0.25s var(--ease);
+}
+.drawer-header__close-icon span:nth-child(1) { transform: translate(-50%, -50%) rotate(45deg); }
+.drawer-header__close-icon span:nth-child(2) { transform: translate(-50%, -50%) rotate(-45deg); }
 
 .drawer-section-title {
     font-size: 12px;
@@ -1869,10 +1898,10 @@ footer::after {
                 </div>
             </div>
             <button class="drawer-header__close" id="drawerClose" type="button" aria-label="Fechar menu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"/>
-                    <line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
+                <span class="drawer-header__close-icon" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                </span>
             </button>
         </div>
 
