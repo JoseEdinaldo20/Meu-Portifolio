@@ -2296,6 +2296,71 @@ footer::after {
     }
 }
 
+/* Cards de Principais Atividades — tom quente alinhado à identidade 2D */
+.style-2d .timeline__activity {
+    background: transparent;
+    border: 2px solid var(--accent-2d);
+    color: var(--ink-2d);
+    box-shadow: none;
+}
+.style-2d .timeline__activity:hover {
+    background: transparent;
+    border-color: var(--accent-dark-2d);
+    color: var(--ink-2d);
+    box-shadow: 3px 3px 0 var(--accent-2d);
+}
+.style-2d .timeline__activity-icon {
+    background: transparent;
+    border-color: var(--accent-2d);
+    color: var(--accent-dark-2d);
+}
+.style-2d .timeline__activity:hover .timeline__activity-icon {
+    background: transparent;
+    border-color: var(--accent-dark-2d);
+    color: var(--accent-dark-2d);
+}
+
+/* Etiquetas de competências: marrom sólido, separado dos cards de atividades */
+.style-2d .timeline__tag {
+    background: var(--accent-2d);
+    color: var(--paper-2d);
+    border: 1px solid var(--accent-dark-2d);
+}
+.style-2d .timeline__item:hover .timeline__tag {
+    background: var(--accent-dark-2d);
+    color: var(--paper-2d);
+    border-color: var(--ink-2d);
+}
+
+/* Mobile: reserva uma faixa própria para TI SUPORTE, longe do hambúrguer */
+@media (max-width: 860px) {
+    .style-2d .hero::before {
+        top: 76px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%) rotate(3deg);
+        z-index: 2;
+    }
+}
+@media (max-width: 420px) {
+    .style-2d .hero::before {
+        top: 68px;
+        padding: 7px 10px;
+        font-size: 9px;
+    }
+}
+
+/* Experiências no mobile: cards sem a barra e os pontos da timeline */
+@media (max-width: 860px) {
+    .style-2d .timeline {
+        padding-left: 0;
+    }
+    .style-2d .timeline::before,
+    .style-2d .timeline__item::before {
+        display: none;
+    }
+}
+
 </style>
 </head>
 
