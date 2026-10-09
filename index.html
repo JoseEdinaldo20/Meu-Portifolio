@@ -1827,10 +1827,479 @@ footer::after {
         scroll-behavior: auto !important;
     }
 }
+
+
+/* ============================================================
+   TEMA 2D — EDITORIAL ILUSTRADO
+   Mantém a paleta original e adiciona planos chapados,
+   contornos marcados, textura pontilhada e sombras deslocadas.
+   ============================================================ */
+.style-2d {
+    --ink-2d: #3B281A;
+    --paper-2d: #FFFDF9;
+    --paper-warm-2d: #F3E9DE;
+    --accent-2d: #8B6549;
+    --accent-dark-2d: #553B28;
+    --line-2d: 2px solid var(--ink-2d);
+    --shadow-2d: 7px 7px 0 var(--ink-2d);
+    --shadow-2d-soft: 5px 5px 0 rgba(85,59,40,.22);
+    background:
+        radial-gradient(circle at 1px 1px, rgba(85,59,40,.14) 1px, transparent 1.5px) 0 0 / 18px 18px,
+        var(--paper-2d);
+}
+
+.style-2d body,
+.style-2d main,
+.style-2d footer { position: relative; }
+
+.style-2d .bg-decor { opacity: .32; }
+.style-2d .bg-decor::before,
+.style-2d .bg-decor::after {
+    filter: none;
+    opacity: .11;
+    border: 3px solid var(--accent-dark-2d);
+    border-radius: 38% 62% 55% 45%;
+}
+.style-2d .bg-decor::before { transform: rotate(16deg); }
+.style-2d .bg-decor::after { transform: rotate(-19deg); }
+
+/* Cartões com aparência de recorte de papel */
+.style-2d .pill-nav {
+    background: var(--paper-2d);
+    border: var(--line-2d);
+    border-radius: 12px;
+    box-shadow: var(--shadow-2d);
+    backdrop-filter: none;
+}
+.style-2d .pill-nav-wrapper::after { display: none; }
+.style-2d .pill-nav__item { border-radius: 7px; font-weight: 700; }
+.style-2d .pill-nav__indicator {
+    top: 8px;
+    bottom: 8px;
+    background: var(--accent-dark-2d);
+    border-radius: 7px;
+    box-shadow: none;
+}
+.style-2d .pill-nav__item.is-active { color: var(--white); }
+
+.style-2d .hero {
+    isolation: isolate;
+}
+.style-2d .hero::before {
+    content: 'TI / SUPORTE';
+    position: absolute;
+    top: 12%;
+    right: -2%;
+    z-index: -1;
+    padding: 9px 14px;
+    color: var(--paper-2d);
+    background: var(--accent-dark-2d);
+    border: var(--line-2d);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .18em;
+    transform: rotate(7deg);
+    box-shadow: 5px 5px 0 var(--accent-2d);
+}
+.style-2d .hero__photo-wrapper { filter: none; }
+.style-2d .hero__photo {
+    border: 3px solid var(--ink-2d);
+    border-radius: 18px;
+    background: var(--paper-warm-2d);
+    box-shadow: var(--shadow-2d);
+    transform: rotate(-2deg);
+}
+.style-2d .hero__photo-decor,
+.style-2d .hero__photo-decor-2 { border: 3px solid var(--ink-2d); }
+.style-2d .hero__photo-decor { background: var(--brown-300); }
+.style-2d .hero__photo-decor-2 { background: var(--accent-dark-2d); }
+.style-2d .hero__name {
+    text-shadow: 3px 3px 0 rgba(184,149,110,.55);
+}
+.style-2d .hero__role-strong { color: var(--accent-dark-2d); }
+.style-2d .hero__chip {
+    background: var(--paper-2d);
+    border: var(--line-2d);
+    border-radius: 7px;
+    box-shadow: 3px 3px 0 var(--accent-2d);
+    font-weight: 700;
+}
+
+/* Botões inspirados no CTA da referência */
+.style-2d .btn,
+.style-2d .project-featured__cta {
+    border: var(--line-2d);
+    border-radius: 7px;
+    box-shadow: 5px 5px 0 var(--ink-2d);
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.style-2d .btn:hover,
+.style-2d .project-featured__cta:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 var(--accent-2d);
+}
+.style-2d .btn--primary,
+.style-2d .project-featured__cta {
+    background: var(--accent-dark-2d);
+}
+.style-2d .btn--ghost {
+    background: var(--paper-2d);
+    border-color: var(--ink-2d);
+}
+.style-2d .btn--primary::before,
+.style-2d .project-featured__cta::before { display: none; }
+
+.style-2d .project-featured,
+.style-2d .cert-card,
+.style-2d .timeline__card,
+.style-2d .contact-panel {
+    background: var(--paper-2d);
+    border: var(--line-2d);
+    border-radius: 12px;
+    box-shadow: var(--shadow-2d-soft);
+}
+.style-2d .project-featured:hover,
+.style-2d .cert-card:hover,
+.style-2d .timeline__item:hover .timeline__card {
+    transform: translate(-3px, -3px);
+    border-color: var(--ink-2d);
+    box-shadow: 9px 9px 0 var(--accent-2d);
+}
+.style-2d .project-featured__cover { background: var(--paper-warm-2d); }
+.style-2d .project-featured__cover::after {
+    content: 'PROJETO';
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    padding: 6px 9px;
+    background: var(--paper-2d);
+    border: var(--line-2d);
+    color: var(--ink-2d);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .14em;
+    transform: rotate(-4deg);
+}
+
+.style-2d .cert-card { cursor: pointer; }
+.style-2d .cert-card__preview { background: var(--paper-warm-2d); border-bottom: var(--line-2d); }
+.style-2d .cert-card__preview::after {
+    background: var(--accent-dark-2d);
+    border: 0;
+    font-size: 12px;
+}
+.style-2d .cert-card__tag,
+.style-2d .timeline__tag,
+.style-2d .timeline__period {
+    border: 1px solid var(--ink-2d);
+    border-radius: 5px;
+}
+
+.style-2d .timeline::before { width: 3px; background: var(--ink-2d); }
+.style-2d .timeline__item::before {
+    width: 18px;
+    height: 18px;
+    left: -33px;
+    border: 3px solid var(--ink-2d);
+    background: var(--brown-300);
+    box-shadow: 3px 3px 0 var(--accent-dark-2d);
+}
+.style-2d .timeline__logo {
+    border: var(--line-2d);
+    border-radius: 8px;
+    background: var(--paper-warm-2d);
+}
+
+.style-2d .contact-panel__cta,
+.style-2d .contact-item {
+    border: var(--line-2d);
+    border-radius: 8px;
+}
+.style-2d .contact-panel__cta { box-shadow: 4px 4px 0 var(--ink-2d); }
+.style-2d .contact-item:hover { box-shadow: 4px 4px 0 var(--accent-2d); }
+
+.style-2d .lightbox__content {
+    border: var(--line-2d);
+    border-radius: 10px;
+    box-shadow: 10px 10px 0 var(--ink-2d);
+}
+.style-2d .lightbox__close { border: var(--line-2d); border-radius: 6px; }
+
+@media (max-width: 860px) {
+    .style-2d .hero::before { top: 3%; right: 7%; font-size: 9px; }
+    .style-2d .mobile-drawer__panel { border-left: var(--line-2d); }
+    .style-2d .hamburger__bar { height: 3px; background: var(--ink-2d); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .style-2d .hero__photo { transform: none; }
+}
+
+/* Ajustes pontuais solicitados — sem alterar a estrutura existente */
+
+/* Plaquinha: sempre visível, afastada do conteúdo e responsiva */
+.style-2d .hero::before {
+    content: 'TI SUPORTE';
+    top: clamp(18px, 6vw, 76px);
+    right: clamp(8px, 3.5vw, 52px);
+    z-index: 2;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+/* Download: dimensões estáveis; a animação acontece apenas no ícone/barra */
+.style-2d .btn--download {
+    position: relative;
+    min-width: 214px;
+    justify-content: center;
+    overflow: hidden;
+    transform: none !important;
+    box-shadow: 5px 5px 0 var(--ink-2d) !important;
+}
+.style-2d .btn--download:hover,
+.style-2d .btn--download:active,
+.style-2d .btn--download:focus-visible {
+    transform: none !important;
+    box-shadow: 5px 5px 0 var(--ink-2d) !important;
+}
+.style-2d .btn--download.is-downloading::after {
+    content: '';
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 3px;
+    height: 3px;
+    border-radius: 999px;
+    background: var(--brown-300);
+    transform-origin: left center;
+    animation: download-progress-2d 2.5s cubic-bezier(.22,.61,.36,1) both;
+}
+.style-2d .btn--download.is-downloading svg {
+    animation: download-icon-2d 1.1s ease-in-out infinite;
+}
+@keyframes download-progress-2d {
+    from { transform: scaleX(0); opacity: .35; }
+    18% { opacity: 1; }
+    to { transform: scaleX(1); opacity: 1; }
+}
+@keyframes download-icon-2d {
+    0%, 100% { transform: translateY(0); }
+    45% { transform: translateY(2px); }
+    65% { transform: translateY(0); }
+}
+
+/* Contatos: cartões com mais respiro e distribuição independente */
+.style-2d .contact-panel__right {
+    gap: 16px;
+}
+.style-2d .contact-item,
+.style-2d .contact-item:first-child,
+.style-2d .contact-item:last-child {
+    padding: 18px 20px;
+    border: var(--line-2d);
+    border-radius: 8px;
+}
+
+/* Logotipos: sem moldura, linha ou fundo marrom */
+.style-2d .timeline__logo {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+}
+.style-2d .timeline__logo--placeholder {
+    border: none;
+    box-shadow: none;
+}
+
+/* Hambúrguer: mesmo acabamento 2D dos demais controles */
+.style-2d .hamburger {
+    background: var(--paper-2d);
+    border: var(--line-2d);
+    border-radius: 8px;
+    box-shadow: 4px 4px 0 var(--ink-2d);
+}
+.style-2d .hamburger:hover,
+.style-2d .hamburger:active {
+    transform: none;
+    box-shadow: 4px 4px 0 var(--accent-2d);
+}
+.style-2d .hamburger__bar {
+    height: 3px;
+    border-radius: 1px;
+    background: var(--ink-2d);
+}
+
+/* Drawer aberto: o mesmo papel, contorno e sombra do restante do site */
+.style-2d .mobile-drawer {
+    background: rgba(59,40,26,.32);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+.style-2d .mobile-drawer__panel {
+    background:
+        radial-gradient(circle at 1px 1px, rgba(85,59,40,.12) 1px, transparent 1.5px) 0 0 / 18px 18px,
+        var(--paper-2d);
+    border-left: var(--line-2d);
+    box-shadow: -8px 8px 0 var(--ink-2d);
+}
+.style-2d .drawer-header {
+    border-bottom: var(--line-2d);
+}
+.style-2d .drawer-header__avatar,
+.style-2d .drawer-nav__icon {
+    border: var(--line-2d);
+    border-radius: 7px;
+    background: var(--paper-warm-2d);
+}
+.style-2d .drawer-header__close {
+    border: var(--line-2d);
+    border-radius: 7px;
+    background: var(--paper-2d);
+    box-shadow: 3px 3px 0 var(--ink-2d);
+}
+.style-2d .drawer-nav__link {
+    border: 1px solid transparent;
+    border-radius: 7px;
+}
+.style-2d .drawer-nav__link.is-current,
+.style-2d .drawer-nav__link:hover {
+    border-color: var(--ink-2d);
+    background: var(--paper-warm-2d);
+    color: var(--ink-2d);
+}
+.style-2d .drawer-contacts {
+    border-top: var(--line-2d);
+    padding-top: 18px;
+}
+.style-2d .drawer-contact-link {
+    border: 1px solid rgba(59,40,26,.28);
+    border-radius: 7px;
+    background: var(--paper-2d);
+}
+.style-2d .language-switcher {
+    margin-top: auto;
+    padding-top: 22px;
+    border-top: var(--line-2d);
+}
+.style-2d .language-switcher__options {
+    display: flex;
+    gap: 8px;
+}
+.style-2d .language-switcher__button {
+    min-width: 52px;
+    min-height: 38px;
+    padding: 8px 12px;
+    border: var(--line-2d);
+    border-radius: 6px;
+    background: var(--paper-2d);
+    color: var(--ink-2d);
+    font: 700 12px/1 var(--font-body);
+    letter-spacing: .08em;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 var(--ink-2d);
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+}
+.style-2d .language-switcher__button:hover,
+.style-2d .language-switcher__button:focus-visible {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--accent-2d);
+}
+.style-2d .language-switcher__button.is-active {
+    background: var(--accent-dark-2d);
+    color: var(--paper-2d);
+    box-shadow: 3px 3px 0 var(--accent-2d);
+}
+
+/* Download: reserva de espaço real para impedir quebra da linha de ações */
+.style-2d .hero__actions .btn--download {
+    width: 214px;
+    min-width: 214px;
+    flex: 0 0 214px;
+    transform: none !important;
+}
+.style-2d .hero__actions .btn--download #downloadResumeLabel {
+    white-space: nowrap;
+}
+.style-2d .hero__actions .btn--download:hover,
+.style-2d .hero__actions .btn--download:active,
+.style-2d .hero__actions .btn--download:focus,
+.style-2d .hero__actions .btn--download:focus-visible {
+    transform: none !important;
+    box-shadow: 5px 5px 0 var(--ink-2d) !important;
+}
+/* Remove a barra marrom criada na animação anterior */
+.style-2d .btn--download.is-downloading::after { display: none !important; }
+/* Velocidade linear e constante no símbolo, sem aceleração inicial */
+.style-2d .btn--download.is-downloading svg {
+    animation: download-icon-constant 900ms linear infinite !important;
+}
+.style-2d .btn--download.is-downloading svg path:nth-child(1),
+.style-2d .btn--download.is-downloading svg path:nth-child(2) {
+    animation: download-arrow-constant 900ms linear infinite !important;
+}
+@keyframes download-icon-constant {
+    from { transform: translateY(0); }
+    to { transform: translateY(3px); }
+}
+@keyframes download-arrow-constant {
+    from { transform: translateY(-3px); opacity: .7; }
+    to { transform: translateY(3px); opacity: 1; }
+}
+
+/* Idiomas na navegação principal para computadores e tablets */
+.style-2d .language-switcher--desktop {
+    position: fixed;
+    top: 24px;
+    right: clamp(16px, 2.4vw, 36px);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 9px;
+    background: var(--paper-2d);
+    border: var(--line-2d);
+    border-radius: 8px;
+    box-shadow: 4px 4px 0 var(--ink-2d);
+}
+.style-2d .language-switcher--desktop .language-switcher__caption {
+    color: var(--ink-2d);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+.style-2d .language-switcher--desktop .language-switcher__options { gap: 5px; }
+.style-2d .language-switcher--desktop .language-switcher__button {
+    min-width: 34px;
+    min-height: 28px;
+    padding: 6px 7px;
+    font-size: 10px;
+    box-shadow: 2px 2px 0 var(--ink-2d);
+}
+.style-2d .language-switcher--desktop .language-switcher__button:hover,
+.style-2d .language-switcher--desktop .language-switcher__button:focus-visible {
+    box-shadow: 3px 3px 0 var(--accent-2d);
+}
+
+@media (max-width: 1100px) and (min-width: 861px) {
+    .style-2d .language-switcher--desktop { top: 18px; right: 18px; }
+    .style-2d .language-switcher--desktop .language-switcher__caption { display: none; }
+}
+@media (max-width: 860px) {
+    .style-2d .language-switcher--desktop { display: none; }
+}
+@media (max-width: 640px) {
+    .style-2d .hero__actions .btn--download {
+        width: 100%;
+        min-width: 0;
+        flex-basis: auto;
+    }
+}
+
 </style>
 </head>
 
-<body>
+<body class="style-2d">
 
 <div class="bg-decor" aria-hidden="true"></div>
 
@@ -1875,6 +2344,16 @@ footer::after {
             Contato
         </a>
     </nav>
+</div>
+
+<!-- IDIOMAS — desktop e tablet -->
+<div class="language-switcher language-switcher--desktop" aria-label="Seleção de idioma">
+    <span class="language-switcher__caption" data-i18n="languageLabelDesktop">Idioma</span>
+    <div class="language-switcher__options" role="group" aria-label="Idiomas disponíveis">
+        <button type="button" class="language-switcher__button" data-language="pt" aria-pressed="false">PT</button>
+        <button type="button" class="language-switcher__button" data-language="en" aria-pressed="false">EN</button>
+        <button type="button" class="language-switcher__button" data-language="es" aria-pressed="false">ES</button>
+    </div>
 </div>
 
 <!-- BOTÃO HAMBÚRGUER -->
@@ -1981,6 +2460,15 @@ footer::after {
                 </svg>
                 <span>(79) 92001-4962</span>
             </a>
+        </div>
+
+        <div class="language-switcher" aria-label="Seleção de idioma">
+            <p class="drawer-section-title" data-i18n="languageLabel">Idioma</p>
+            <div class="language-switcher__options" role="group" aria-label="Idiomas disponíveis">
+                <button type="button" class="language-switcher__button" data-language="pt" aria-pressed="false">PT</button>
+                <button type="button" class="language-switcher__button" data-language="en" aria-pressed="false">EN</button>
+                <button type="button" class="language-switcher__button" data-language="es" aria-pressed="false">ES</button>
+            </div>
         </div>
     </div>
 </div>
@@ -2946,11 +3434,22 @@ footer::after {
     if (downloadResume && downloadResumeLabel) {
         downloadResume.addEventListener('click', () => {
             downloadResume.classList.add('is-downloading');
-            downloadResumeLabel.textContent = 'Baixando currículo...';
+            downloadResume.setAttribute('aria-busy', 'true');
+            const currentLanguage = document.documentElement.lang.toLowerCase();
+            downloadResumeLabel.textContent = currentLanguage.startsWith('en')
+                ? 'Downloading resume...'
+                : currentLanguage.startsWith('es')
+                    ? 'Descargando CV...'
+                    : 'Baixando currículo...';
             window.clearTimeout(downloadResumeTimer);
             downloadResumeTimer = window.setTimeout(() => {
                 downloadResume.classList.remove('is-downloading');
-                downloadResumeLabel.textContent = 'Baixar Currículo';
+                downloadResume.removeAttribute('aria-busy');
+                downloadResumeLabel.textContent = currentLanguage.startsWith('en')
+                    ? 'Download Resume'
+                    : currentLanguage.startsWith('es')
+                        ? 'Descargar CV'
+                        : 'Baixar Currículo';
             }, 2500);
         });
     }
@@ -3041,6 +3540,93 @@ footer::after {
             window.scrollTo({ top: offsetTop, behavior: 'smooth' });
         });
     });
+
+    /* Idiomas: português padrão, inglês e espanhol com detecção do navegador */
+    const languageButtons = Array.from(document.querySelectorAll('[data-language]'));
+    const languageLabel = document.querySelector('[data-i18n="languageLabel"]');
+    const translations = {
+        en: {
+            'Navegação': 'Navigation', 'Sobre mim': 'About me', 'Projetos': 'Projects', 'Certificados': 'Certificates', 'Experiências': 'Experience', 'Contato': 'Contact',
+            'Analista de': 'Support', 'Suporte JR': 'Analyst', 'Baixar Currículo': 'Download Resume', 'Baixando currículo...': 'Downloading resume...', 'Aracaju · SE': 'Aracaju · SE', 'Formação Técnica Concluída': 'Technical Training Completed',
+            'Suporte & Infraestrutura': 'Support & Infrastructure', 'Fale Comigo': 'Contact Me', 'Ver Experiências': 'View Experience', 'Profissional formado como Técnico de Nível Médio Integrado em Informática pelo Instituto Federal de Sergipe (IFS), com atuação em suporte técnico corporativo e infraestrutura de TI. Experiência consolidada em ambientes de alta criticidade — tribunal, hospital e concessionária — com foco em resolução ágil de incidentes, gestão de acessos e estabilidade operacional.': 'Professional with an integrated technical diploma in Information Technology from the Federal Institute of Sergipe (IFS), working with corporate technical support and IT infrastructure. Solid experience in high-criticality environments — court, hospital and dealership — focused on fast incident resolution, access management and operational stability.',
+            'Servel Veículos': 'Servel Vehicles', 'Getinfo': 'Getinfo', 'INTS — Maternidade Lourdes Nogueira': 'INTS — Lourdes Nogueira Maternity Hospital', 'Instituto Federal de Sergipe (IFS)': 'Federal Institute of Sergipe (IFS)', 'Aracaju, SE · Contrato': 'Aracaju, SE · Contract', 'Aracaju, SE · Estágio': 'Aracaju, SE · Internship',
+            'Trabalhos desenvolvidos ao longo da minha trajetória, unindo tecnologia, design e resolução de problemas reais.': 'Work developed throughout my career, combining technology, design and solutions to real-world problems.',
+            'Web Design · Front-end': 'Web Design · Front-end', 'Landing Page': 'Landing Page', 'UI/UX': 'UI/UX', 'Branding': 'Branding', 'Luciana Magalhães Psicologia Afetiva': 'Luciana Magalhães Affective Psychology', 'Certificações técnicas e participações acadêmicas que sustentam a base profissional em tecnologia da informação.': 'Technical certifications and academic experiences that support my professional foundation in information technology.',
+            'Técnico de Nível Médio Integrado em Informática': 'Integrated Technical High School Diploma in Information Technology', 'Oficina de Robótica Virtual — Competição OBR': 'Virtual Robotics Workshop — OBR Competition', 'Administrando Banco de Dados': 'Database Administration', 'IFS · Campus Aracaju': 'IFS · Aracaju Campus', '18ª SNCT · IFS': '18th SNCT · IFS', 'Fundação Bradesco · Escola Virtual': 'Fundação Bradesco · Virtual School',
+            'Formação técnica completa pelo Instituto Federal de Sergipe, com ênfase em desenvolvimento de sistemas, banco de dados, redes e infraestrutura de TI.': 'Technical training from the Federal Institute of Sergipe, focused on systems development, databases, networks and IT infrastructure.', 'Participação na 18ª Semana Nacional de Ciência e Tecnologia, com foco em robótica virtual aplicada à Olimpíada Brasileira de Robótica.': 'Participation in the 18th National Week of Science and Technology, focused on virtual robotics applied to the Brazilian Robotics Olympiad.', 'Curso autoinstrucional cobrindo modelagem, administração, segurança e operação de bancos de dados relacionais. Carga horária total de 15 horas.': 'Self-paced course covering modeling, administration, security and operation of relational databases. Total workload: 15 hours.',
+            'Analista de Suporte Jr.': 'Junior Support Analyst', 'Técnico de Suporte': 'Support Technician', 'Técnico em Informática': 'IT Technician', 'Trainee de TI': 'IT Trainee',
+            'Suporte técnico de primeiro e segundo nível': 'First- and second-level technical support', 'Monitoramento proativo da infraestrutura de TI': 'Proactive IT infrastructure monitoring', 'Gestão de contas e permissões em rede': 'Network account and permission management', 'Diagnóstico e resolução de incidentes críticos': 'Diagnosis and resolution of critical incidents', 'Configuração e customização do GLPI': 'GLPI configuration and customization', 'Configuração do Zabbix e Grafana': 'Zabbix and Grafana configuration', 'Automação de processos manuais usando Python': 'Automation of manual processes using Python',
+            'Atendimento N1 e resolução de problemas de acesso': 'Level 1 support and access issue resolution', 'Suporte a certificados digitais e autenticação': 'Digital certificate and authentication support', 'Configuração de impressoras e softwares institucionais': 'Configuration of printers and institutional software', 'Suporte remoto para resolução de problemas técnicos': 'Remote support for technical issue resolution', 'Manutenção preventiva e corretiva de equipamentos': 'Preventive and corrective equipment maintenance', 'Suporte técnico contínuo em ambiente 24/7': 'Continuous technical support in a 24/7 environment', 'Gerenciamento de incidentes críticos': 'Critical incident management', 'Cadastro de funcionários no prontuário eletrônico e verificação de falhas para reportar à equipe de desenvolvimento': 'Employee registration in the electronic medical record and failure checking for the development team', 'Configuração de acessos via GPO, gerenciamento de usuários e grupos, além do controle e bloqueio de permissões de acesso.': 'GPO access configuration, user and group management, and access permission control and blocking.', 'Manutenção de laboratórios de informática': 'Computer lab maintenance', 'Suporte técnico a alunos e professores': 'Technical support for students and teachers', 'Controle de inventário de equipamentos': 'Equipment inventory control',
+            'Suporte técnico em ambiente hospitalar de alta criticidade, garantindo a continuidade operacional dos sistemas essenciais em regime contínuo de funcionamento.': 'Technical support in a high-criticality hospital environment, ensuring the operational continuity of essential systems.', 'Primeira experiência profissional em TI, desenvolvendo competências em suporte técnico e gestão de ambientes educacionais de informática.': 'First professional IT experience, developing skills in technical support and management of educational computing environments.',
+            'Atuações em ambientes corporativos de alta criticidade — tribunal, hospital e concessionária — com foco em suporte técnico, infraestrutura e continuidade operacional.': 'Experience in high-criticality corporate environments — court, hospital and dealership — focused on technical support, infrastructure and operational continuity.',
+            'Principais Atividades': 'Main Responsibilities', 'Suporte Técnico': 'Technical Support', 'Infraestrutura': 'Infrastructure', 'Redes': 'Networks', 'Gestão de Acessos': 'Access Management', 'Help Desk': 'Help Desk', 'Certificados Digitais': 'Digital Certificates', 'Suporte Remoto': 'Remote Support', 'Manutenção': 'Maintenance', 'Sistemas Hospitalares': 'Hospital Systems', 'Laboratórios': 'Laboratories',
+            'Estou aberto a oportunidades, projetos e conexões profissionais. Escolha o canal que preferir.': 'I am open to opportunities and professional connections. Choose your preferred channel.', 'Vamos construir algo juntos?': 'Let’s build something together?', 'Se você busca um profissional comprometido com excelência técnica, resolução ágil de problemas e evolução contínua, será um prazer conversar.': 'If you are looking for a professional committed to technical excellence, fast problem solving and continuous improvement, I would be glad to talk.',
+            'E-mail': 'Email', 'Telefone': 'Phone', 'Resposta em até 24 horas': 'Reply within 24 hours', 'Aberto a propostas e networking': 'Open to proposals and networking', 'Voltar ao topo': 'Back to top', 'Todos os direitos reservados.': 'All rights reserved.', 'Foto indisponível': 'Photo unavailable', 'Verifique a conexão com a internet.': 'Check your internet connection.', 'Idioma': 'Language', 'Mar 2024 — Mai 2025': 'Mar 2024 — May 2025', '2025 — Atual': '2025 — Present'
+        },
+        es: {
+            'Navegação': 'Navegación', 'Sobre mim': 'Sobre mí', 'Projetos': 'Proyectos', 'Certificados': 'Certificados', 'Experiências': 'Experiencia', 'Contato': 'Contacto',
+            'Analista de': 'Analista de', 'Suporte JR': 'Soporte JR', 'Baixar Currículo': 'Descargar CV', 'Baixando currículo...': 'Descargando CV...', 'Aracaju · SE': 'Aracaju · SE', 'Formação Técnica Concluída': 'Formación Técnica Completada',
+            'Suporte & Infraestrutura': 'Soporte e Infraestructura', 'Fale Comigo': 'Contáctame', 'Ver Experiências': 'Ver Experiencia', 'Profissional formado como Técnico de Nível Médio Integrado em Informática pelo Instituto Federal de Sergipe (IFS), com atuação em suporte técnico corporativo e infraestrutura de TI. Experiência consolidada em ambientes de alta criticidade — tribunal, hospital e concessionária — com foco em resolução ágil de incidentes, gestão de acessos e estabilidade operacional.': 'Profesional con formación técnica integrada en Informática por el Instituto Federal de Sergipe (IFS), con experiencia en soporte técnico corporativo e infraestructura de TI. Experiencia sólida en entornos de alta criticidad — tribunal, hospital y concesionaria — enfocada en la resolución ágil de incidentes, gestión de accesos y estabilidad operativa.',
+            'Servel Veículos': 'Servel Vehículos', 'Getinfo': 'Getinfo', 'INTS — Maternidade Lourdes Nogueira': 'INTS — Maternidad Lourdes Nogueira', 'Instituto Federal de Sergipe (IFS)': 'Instituto Federal de Sergipe (IFS)', 'Aracaju, SE · Contrato': 'Aracaju, SE · Contrato', 'Aracaju, SE · Estágio': 'Aracaju, SE · Prácticas',
+            'Trabalhos desenvolvidos ao longo da minha trajetória, unindo tecnologia, design e resolução de problemas reais.': 'Trabajos desarrollados a lo largo de mi trayectoria, uniendo tecnología, diseño y soluciones a problemas reales.',
+            'Web Design · Front-end': 'Diseño Web · Front-end', 'Landing Page': 'Landing Page', 'UI/UX': 'UI/UX', 'Branding': 'Branding', 'Luciana Magalhães Psicologia Afetiva': 'Luciana Magalhães Psicología Afectiva', 'Certificações técnicas e participações acadêmicas que sustentam a base profissional em tecnologia da informação.': 'Certificaciones técnicas y experiencias académicas que respaldan mi base profesional en tecnología de la información.',
+            'Técnico de Nível Médio Integrado em Informática': 'Técnico de Nivel Medio Integrado en Informática', 'Oficina de Robótica Virtual — Competição OBR': 'Taller de Robótica Virtual — Competición OBR', 'Administrando Banco de Dados': 'Administración de Bases de Datos', 'IFS · Campus Aracaju': 'IFS · Campus Aracaju', '18ª SNCT · IFS': '18.ª SNCT · IFS', 'Fundação Bradesco · Escola Virtual': 'Fundação Bradesco · Escuela Virtual',
+            'Formação técnica completa pelo Instituto Federal de Sergipe, com ênfase em desenvolvimento de sistemas, banco de dados, redes e infraestrutura de TI.': 'Formación técnica del Instituto Federal de Sergipe, con énfasis en desarrollo de sistemas, bases de datos, redes e infraestructura de TI.', 'Participação na 18ª Semana Nacional de Ciência e Tecnologia, com foco em robótica virtual aplicada à Olimpíada Brasileira de Robótica.': 'Participación en la 18.ª Semana Nacional de Ciencia y Tecnología, con enfoque en robótica virtual aplicada a la Olimpiada Brasileña de Robótica.', 'Curso autoinstrucional cobrindo modelagem, administração, segurança e operação de bancos de dados relacionais. Carga horária total de 15 horas.': 'Curso autodidacta sobre modelado, administración, seguridad y operación de bases de datos relacionales. Carga total: 15 horas.',
+            'Analista de Suporte Jr.': 'Analista de Soporte Jr.', 'Técnico de Suporte': 'Técnico de Soporte', 'Técnico em Informática': 'Técnico en Informática', 'Trainee de TI': 'Trainee de TI',
+            'Suporte técnico de primeiro e segundo nível': 'Soporte técnico de primer y segundo nivel', 'Monitoramento proativo da infraestrutura de TI': 'Monitoreo proactivo de la infraestructura de TI', 'Gestão de contas e permissões em rede': 'Gestión de cuentas y permisos de red', 'Diagnóstico e resolução de incidentes críticos': 'Diagnóstico y resolución de incidentes críticos', 'Configuração e customização do GLPI': 'Configuración y personalización de GLPI', 'Configuração do Zabbix e Grafana': 'Configuración de Zabbix y Grafana', 'Automação de processos manuais usando Python': 'Automatización de procesos manuales con Python',
+            'Atendimento N1 e resolução de problemas de acesso': 'Atención N1 y resolución de problemas de acceso', 'Suporte a certificados digitais e autenticação': 'Soporte para certificados digitales y autenticación', 'Configuração de impressoras e softwares institucionais': 'Configuración de impresoras y software institucional', 'Suporte remoto para resolução de problemas técnicos': 'Soporte remoto para resolver problemas técnicos', 'Manutenção preventiva e corretiva de equipamentos': 'Mantenimiento preventivo y correctivo de equipos', 'Suporte técnico contínuo em ambiente 24/7': 'Soporte técnico continuo en un entorno 24/7', 'Gerenciamento de incidentes críticos': 'Gestión de incidentes críticos', 'Cadastro de funcionários no prontuário eletrônico e verificação de falhas para reportar à equipe de desenvolvimento': 'Registro de empleados en el historial electrónico y verificación de fallos para el equipo de desarrollo', 'Configuração de acessos via GPO, gerenciamento de usuários e grupos, além do controle e bloqueio de permissões de acesso.': 'Configuración de accesos mediante GPO, gestión de usuarios y grupos y control y bloqueo de permisos de acceso.', 'Manutenção de laboratórios de informática': 'Mantenimiento de laboratorios de informática', 'Suporte técnico a alunos e professores': 'Soporte técnico para alumnos y profesores', 'Controle de inventário de equipamentos': 'Control de inventario de equipos',
+            'Suporte técnico em ambiente hospitalar de alta criticidade, garantindo a continuidade operacional dos sistemas essenciais em regime contínuo de funcionamento.': 'Soporte técnico en un entorno hospitalario de alta criticidad, garantizando la continuidad operativa de los sistemas esenciales.', 'Primeira experiência profissional em TI, desenvolvendo competências em suporte técnico e gestão de ambientes educacionais de informática.': 'Primera experiencia profesional en TI, desarrollando habilidades en soporte técnico y gestión de entornos educativos de informática.',
+            'Atuações em ambientes corporativos de alta criticidade — tribunal, hospital e concessionária — com foco em suporte técnico, infraestrutura e continuidade operacional.': 'Experiencia en entornos corporativos de alta criticidad — tribunal, hospital y concesionaria — con enfoque en soporte técnico, infraestructura y continuidad operativa.',
+            'Principais Atividades': 'Principales Actividades', 'Suporte Técnico': 'Soporte Técnico', 'Infraestrutura': 'Infraestructura', 'Redes': 'Redes', 'Gestão de Acessos': 'Gestión de Accesos', 'Help Desk': 'Mesa de Ayuda', 'Certificados Digitais': 'Certificados Digitales', 'Suporte Remoto': 'Soporte Remoto', 'Manutenção': 'Mantenimiento', 'Sistemas Hospitalares': 'Sistemas Hospitalarios', 'Laboratórios': 'Laboratorios',
+            'Estou aberto a oportunidades, projetos e conexões profissionais. Escolha o canal que preferir.': 'Estoy abierto a oportunidades y conexiones profesionales. Elige tu canal preferido.', 'Vamos construir algo juntos?': '¿Construimos algo juntos?', 'Se você busca um profissional comprometido com excelência técnica, resolução ágil de problemas e evolução contínua, será um prazer conversar.': 'Si buscas un profesional comprometido con la excelencia técnica, la resolución ágil de problemas y la mejora continua, será un placer conversar.',
+            'E-mail': 'Correo electrónico', 'Telefone': 'Teléfono', 'Resposta em até 24 horas': 'Respuesta en hasta 24 horas', 'Aberto a propostas e networking': 'Abierto a propuestas y networking', 'Voltar ao topo': 'Volver arriba', 'Todos os direitos reservados.': 'Todos los derechos reservados.', 'Foto indisponível': 'Foto no disponible', 'Verifique a conexão com a internet.': 'Verifica tu conexión a internet.', 'Idioma': 'Idioma', 'Mar 2024 — Mai 2025': 'Mar 2024 — May 2025', '2025 — Atual': '2025 — Actual'
+        }
+    };
+    const normalizeText = (value) => value.replace(/\s+/g, ' ').trim();
+    const originalText = new WeakMap();
+    const textWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const textNodes = [];
+    while (textWalker.nextNode()) {
+        const node = textWalker.currentNode;
+        if (node.parentElement && !node.parentElement.closest('script, style')) {
+            originalText.set(node, node.nodeValue);
+            textNodes.push(node);
+        }
+    }
+    function applyLanguage(language) {
+        const dictionary = translations[language] || {};
+        textNodes.forEach((node) => {
+            const source = normalizeText(originalText.get(node) || '');
+            if (language === 'pt') node.nodeValue = originalText.get(node);
+            else if (dictionary[source]) {
+                const original = originalText.get(node) || '';
+                node.nodeValue = (original.match(/^\s*/)?.[0] || '') + dictionary[source] + (original.match(/\s*$/)?.[0] || '');
+            }
+        });
+        document.documentElement.lang = language === 'pt' ? 'pt-BR' : language;
+        document.title = language === 'en' ? 'José Edinaldo Almeida Araujo — Junior Support Analyst' : language === 'es' ? 'José Edinaldo Almeida Araujo — Analista de Soporte JR' : 'José Edinaldo Almeida Araujo — Analista de Suporte JR';
+        if (languageLabel) languageLabel.textContent = language === 'en' ? 'Language' : 'Idioma';
+        const hamburger = document.getElementById('hamburger');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const mainNav = document.getElementById('pillNav');
+        if (hamburger) hamburger.setAttribute('aria-label', language === 'en' ? 'Open menu' : language === 'es' ? 'Abrir menú' : 'Abrir menu');
+        if (mobileDrawer) mobileDrawer.querySelector('[role="dialog"]')?.setAttribute('aria-label', language === 'en' ? 'Navigation menu' : language === 'es' ? 'Menú de navegación' : 'Menu de navegação');
+        if (mainNav) mainNav.setAttribute('aria-label', language === 'en' ? 'Main navigation' : language === 'es' ? 'Navegación principal' : 'Navegação principal');
+        languageButtons.forEach((button) => {
+            const active = button.dataset.language === language;
+            button.classList.toggle('is-active', active);
+            button.setAttribute('aria-pressed', String(active));
+        });
+        try { localStorage.setItem('portfolio-language', language); } catch (_) { /* indisponível */ }
+    }
+    const browserLanguage = (navigator.language || 'pt-BR').toLowerCase();
+    let initialLanguage = browserLanguage.startsWith('en') ? 'en' : browserLanguage.startsWith('es') ? 'es' : 'pt';
+    try {
+        const savedLanguage = localStorage.getItem('portfolio-language');
+        if (['pt', 'en', 'es'].includes(savedLanguage)) initialLanguage = savedLanguage;
+    } catch (_) { /* indisponível */ }
+    languageButtons.forEach((button) => button.addEventListener('click', () => applyLanguage(button.dataset.language)));
+    applyLanguage(initialLanguage);
 })();
 </script>
 
