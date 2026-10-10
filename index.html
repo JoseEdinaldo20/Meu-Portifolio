@@ -2755,8 +2755,22 @@ html[data-theme="dark"] .style-2d .project-featured__cover img {
 }
 
 @media (max-width: 1100px) and (min-width: 861px) {
+    /* No notebook, o seletor de idioma fica à direita e o tema ocupa uma
+       faixa própria à esquerda, evitando sobreposição entre os controles. */
+    .style-2d .language-switcher--desktop {
+        top: 18px;
+        right: 18px;
+    }
     .style-2d .theme-toggle--desktop {
-        right: 170px;
+        top: 18px;
+        right: 154px;
+    }
+}
+
+@media (min-width: 1101px) {
+    /* Reserva a largura do seletor de idioma + uma folga visual. */
+    .style-2d .theme-toggle--desktop {
+        right: clamp(270px, 18vw, 320px);
     }
 }
 
@@ -3027,6 +3041,266 @@ html[data-theme="dark"] .style-2d .theme-toggle--desktop [data-theme-label] {
     clip: rect(0, 0, 0, 0) !important;
     white-space: nowrap !important;
     border: 0 !important;
+}
+
+
+/* Ajustes finais de adaptação do tema escuro */
+html[data-theme="dark"] .style-2d .hero__name,
+html[data-theme="dark"] .style-2d .section-title,
+html[data-theme="dark"] .style-2d .project-featured__title,
+html[data-theme="dark"] .style-2d .cert-card__title,
+html[data-theme="dark"] .style-2d .timeline__role,
+html[data-theme="dark"] .style-2d .timeline__company,
+html[data-theme="dark"] .style-2d .contact-panel__title {
+    color: #fffaf4;
+}
+
+html[data-theme="dark"] .style-2d .hero__bio,
+html[data-theme="dark"] .style-2d .hero__role-light,
+html[data-theme="dark"] .style-2d .section-subtitle,
+html[data-theme="dark"] .style-2d .project-featured__description,
+html[data-theme="dark"] .style-2d .cert-card__description,
+html[data-theme="dark"] .style-2d .timeline__description,
+html[data-theme="dark"] .style-2d .timeline__activity-text,
+html[data-theme="dark"] .style-2d .contact-panel__text {
+    color: #d8c9ba;
+}
+
+html[data-theme="dark"] .style-2d .hero__chip,
+html[data-theme="dark"] .style-2d .project-featured__body,
+html[data-theme="dark"] .style-2d .cert-card__body,
+html[data-theme="dark"] .style-2d .contact-panel__right {
+    background: #211b17;
+    border-color: #5f4a3b;
+    color: #f4e9dc;
+}
+
+html[data-theme="dark"] .style-2d .hero__chip:hover,
+html[data-theme="dark"] .style-2d .cert-card:hover,
+html[data-theme="dark"] .style-2d .project-featured:hover {
+    border-color: #d1a77d;
+    box-shadow: 6px 6px 0 rgba(0,0,0,.5);
+}
+
+html[data-theme="dark"] .style-2d .hero__chip svg,
+html[data-theme="dark"] .style-2d .cert-card__institution,
+html[data-theme="dark"] .style-2d .cert-card__date,
+html[data-theme="dark"] .style-2d .cert-card__verify,
+html[data-theme="dark"] .style-2d .timeline__location,
+html[data-theme="dark"] .style-2d .contact-item__label {
+    color: #e0b88b;
+}
+
+html[data-theme="dark"] .style-2d .project-featured__tag,
+html[data-theme="dark"] .style-2d .timeline__tag {
+    background: #6f4e37;
+    border-color: #d1a77d;
+    color: #fffaf4;
+}
+
+html[data-theme="dark"] .style-2d .mobile-drawer {
+    background: rgba(8, 6, 5, .78);
+}
+
+html[data-theme="dark"] .style-2d .mobile-drawer__panel,
+html[data-theme="dark"] .style-2d .drawer-header__close,
+html[data-theme="dark"] .style-2d .drawer-contact-link {
+    background: #211b17;
+    color: #fffaf4;
+    border-color: #c9a17b;
+}
+
+@media (max-width: 1100px) and (min-width: 861px) {
+    .style-2d .language-switcher--desktop,
+    .style-2d .theme-toggle--desktop {
+        z-index: 1100;
+    }
+}
+
+
+/* Ajustes finais solicitados: etiqueta à esquerda, controles próximos e
+   digitação com cursor semelhante ao Outlook clássico. */
+.style-2d .hero::before {
+    left: clamp(8px, 3.5vw, 52px);
+    right: auto;
+    transform: rotate(-7deg);
+}
+
+@media (min-width: 1101px) {
+    .style-2d .theme-toggle--desktop {
+        /* Próximo do idioma, mas com espaço suficiente para as sombras. */
+        right: clamp(215px, 15vw, 250px);
+    }
+}
+
+@media (max-width: 1100px) and (min-width: 861px) {
+    .style-2d .theme-toggle--desktop {
+        right: 146px;
+    }
+}
+
+@media (max-width: 860px) {
+    .style-2d .hero::before {
+        top: 68px;
+        left: 12px;
+        right: auto;
+        transform: rotate(-7deg);
+    }
+}
+
+/* Digitação suave: cada caractere entra com uma microtransição discreta,
+   enquanto o cursor mantém uma pulsação contínua e natural. */
+.hero__role-specialty.is-typing {
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+.hero__role-specialty .role-character {
+    /* Inline evita que cada caractere seja tratado como um bloco e quebre
+       palavras ou linhas de forma irregular. */
+    display: inline;
+    white-space: pre;
+    animation: role-character-in 300ms cubic-bezier(.16,1,.3,1) both;
+}
+.hero__role-specialty.is-typing::after {
+    width: 2px;
+    height: 1.08em;
+    margin-left: 4px;
+    vertical-align: -.14em;
+    background: currentColor;
+    box-shadow: 0 0 0 0.25px currentColor;
+    animation: outlook-caret-smooth 1.05s ease-in-out infinite;
+}
+@keyframes role-character-in {
+    from { opacity: 0; }
+    65% { opacity: .82; }
+    to { opacity: 1; }
+}
+@keyframes outlook-caret-smooth {
+    0%, 100% { opacity: .22; }
+    42%, 58% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero__role-specialty .role-character {
+        animation: none;
+    }
+    .hero__role-specialty.is-typing::after {
+        opacity: 1;
+        animation: none;
+    }
+}
+
+
+/* Projeto NetMap */
+.project-netmap {
+    margin-top: 24px;
+}
+.project-netmap__details {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 28px 40px 32px;
+    border-top: 2px solid var(--brown-border);
+    background: linear-gradient(135deg, var(--brown-soft), rgba(255,255,255,.5));
+    color: var(--gray-700);
+    font-size: 13px;
+    line-height: 1.65;
+}
+.project-netmap__details[hidden] {
+    display: none;
+}
+.project-netmap__details-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+.project-netmap__details-header strong {
+    color: var(--gray-900);
+    font-size: 15px;
+    letter-spacing: -.01em;
+}
+.project-netmap__details-header span {
+    color: var(--brown-600);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+.project-netmap__details ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 18px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.project-netmap__details li {
+    position: relative;
+    min-height: 58px;
+    padding: 12px 14px 12px 38px;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    background: var(--white);
+    color: var(--gray-700);
+}
+.project-netmap__details li::before {
+    content: '✓';
+    position: absolute;
+    left: 14px;
+    top: 12px;
+    display: grid;
+    place-items: center;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: var(--brown-500);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 900;
+}
+.project-netmap__toggle {
+    cursor: pointer;
+}
+.project-netmap__toggle[aria-expanded="true"] svg {
+    transform: rotate(90deg);
+}
+.project-netmap__toggle svg {
+    transition: transform .25s var(--ease);
+}
+html[data-theme="dark"] .project-netmap__details {
+    background: linear-gradient(135deg, #2c231d, #211b17);
+    border-color: #8f6d4f;
+    color: #e6d7c8;
+}
+html[data-theme="dark"] .project-netmap__details-header strong {
+    color: #fffaf4;
+}
+html[data-theme="dark"] .project-netmap__details-header span {
+    color: #e0b88b;
+}
+html[data-theme="dark"] .project-netmap__details li {
+    background: #211b17;
+    border-color: #5f4a3b;
+    color: #e6d7c8;
+}
+@media (max-width: 860px) {
+    .project-netmap {
+        margin-top: 18px;
+    }
+    .project-netmap__details {
+        padding: 22px;
+    }
+    .project-netmap__details-header {
+        display: block;
+    }
+    .project-netmap__details-header span {
+        display: block;
+        margin-top: 5px;
+    }
+    .project-netmap__details ul {
+        grid-template-columns: 1fr;
+    }
 }
 
 </style>
@@ -3357,6 +3631,50 @@ html[data-theme="dark"] .style-2d .theme-toggle--desktop [data-theme-label] {
                     </svg>
                     Visitar Site
                 </a>
+            </div>
+        </article>
+
+        <article class="project-featured project-netmap">
+            <div class="project-featured__cover">
+                <img src="https://iili.io/nMMMQ6J.png"
+                     alt="Capa do projeto NetMap, sistema Python para varredura de faixas de IP"
+                     loading="lazy"
+                     crossorigin="anonymous">
+            </div>
+            <div class="project-featured__body">
+                <p class="project-featured__category">Python · Redes · Automação</p>
+                <h3 class="project-featured__title">NetMap</h3>
+                <p class="project-featured__description">
+                    Sistema desenvolvido em Python para varredura e inventário de faixas de IP,
+                    ajudando a identificar rapidamente quais endereços estão livres ou ocupados
+                    em uma rede.
+                </p>
+                <div class="project-featured__tags">
+                    <span class="project-featured__tag">Python</span>
+                    <span class="project-featured__tag">IP Scanner</span>
+                    <span class="project-featured__tag">Inventário de Rede</span>
+                    <span class="project-featured__tag">Relatórios</span>
+                </div>
+                <button type="button" class="project-featured__cta project-netmap__toggle"
+                        aria-expanded="false" aria-controls="netmap-details">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M9 6l6 6-6 6"/>
+                    </svg>
+                    <span>Ver mais detalhes</span>
+                </button>
+            </div>
+            <div class="project-netmap__details" id="netmap-details" hidden>
+                <div class="project-netmap__details-header">
+                    <strong>O que o NetMap consegue fazer</strong>
+                    <span>Monitoramento e inventário de rede</span>
+                </div>
+                <ul>
+                    <li>Verifica, a partir da faixa informada, quais IPs estão livres ou ocupados.</li>
+                    <li>Identifica o nome do dispositivo, endereço MAC e fabricante quando essas informações estão disponíveis.</li>
+                    <li>Indica se o sistema operacional identificado é Windows ou Linux.</li>
+                    <li>Permite reiniciar ou desligar dispositivos autorizados na rede.</li>
+                    <li>Gera relatórios de IPs livres e ocupados nos formatos PDF, CSV e JSON.</li>
+                </ul>
             </div>
         </article>
     </section>
@@ -4379,7 +4697,7 @@ html[data-theme="dark"] .style-2d .theme-toggle--desktop [data-theme-label] {
     const roleSpecialties = [
         { before: 'Especialista em Automação de processos manuais com ', highlight: 'Python' },
         { before: 'Especialista em ', highlight: 'GLPI', after: ' e customização' },
-        { before: 'Especialista em Monitoramento com ', highlight: 'Zabbix' }
+        { before: 'Especialista em Monitoramento com ', highlight: 'Zabbix e Grafana' }
     ];
     let roleCycleToken = 0;
     let roleTimer = 0;
@@ -4390,6 +4708,14 @@ html[data-theme="dark"] .style-2d .theme-toggle--desktop [data-theme-label] {
         });
     }
 
+    function roleCharacterPause(character, token) {
+        // Ritmo de digitação humana: pontuação recebe uma pausa curta extra,
+        // como em um editor de e-mail tradicional.
+        const punctuation = ',.;:—';
+        const milliseconds = punctuation.includes(character) ? 220 : 64;
+        return rolePause(milliseconds, token);
+    }
+
     async function runRoleCycle(token) {
         if (token !== roleCycleToken || !roleInitial || !roleSpecialty) return;
         roleInitial.classList.remove('is-visible');
@@ -4397,28 +4723,36 @@ html[data-theme="dark"] .style-2d .theme-toggle--desktop [data-theme-label] {
 
         for (const phrase of roleSpecialties) {
             if (token !== roleCycleToken) return;
-            const prefix = document.createTextNode('');
+            const prefix = document.createElement('span');
+            prefix.className = 'role-text-part';
             const highlight = document.createElement('span');
             highlight.className = 'hero__role-strong';
-            highlight.textContent = '';
-            const suffix = document.createTextNode('');
+            const suffix = document.createElement('span');
+            suffix.className = 'role-text-part';
             roleSpecialty.replaceChildren(prefix, highlight, suffix);
             roleSpecialty.classList.add('is-visible', 'is-typing');
 
+            const appendCharacter = (container, character) => {
+                const characterNode = document.createElement('span');
+                characterNode.className = 'role-character';
+                characterNode.textContent = character;
+                container.appendChild(characterNode);
+            };
+
             for (const character of phrase.before) {
                 if (token !== roleCycleToken) return;
-                prefix.nodeValue += character;
-                if (!await rolePause(48, token)) return;
+                appendCharacter(prefix, character);
+                if (!await roleCharacterPause(character, token)) return;
             }
             for (const character of phrase.highlight) {
                 if (token !== roleCycleToken) return;
-                highlight.textContent += character;
-                if (!await rolePause(48, token)) return;
+                appendCharacter(highlight, character);
+                if (!await roleCharacterPause(character, token)) return;
             }
             for (const character of (phrase.after || '')) {
                 if (token !== roleCycleToken) return;
-                suffix.nodeValue += character;
-                if (!await rolePause(48, token)) return;
+                appendCharacter(suffix, character);
+                if (!await roleCharacterPause(character, token)) return;
             }
 
             roleSpecialty.classList.remove('is-typing');
@@ -4471,11 +4805,9 @@ html[data-theme="dark"] .style-2d .theme-toggle--desktop [data-theme-label] {
     const themeStorageKey = 'portfolio-theme';
 
     function getPreferredTheme() {
-        try {
-            const saved = localStorage.getItem(themeStorageKey);
-            if (saved === 'dark' || saved === 'light') return saved;
-        } catch (_) { /* armazenamento indisponível */ }
-        return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        // O site sempre começa no tema claro. O visitante pode trocar para
+        // escuro durante a sessão, mas a próxima abertura volta ao claro.
+        return 'light';
     }
 
     function updateThemeControls(theme) {
@@ -4498,8 +4830,10 @@ html[data-theme="dark"] .style-2d .theme-toggle--desktop [data-theme-label] {
         const normalized = theme === 'dark' ? 'dark' : 'light';
         document.documentElement.dataset.theme = normalized;
         updateThemeControls(normalized);
+        // A preferência é intencionalmente apenas da sessão atual.
+        // Assim, cada nova abertura começa no tema claro.
         if (persist) {
-            try { localStorage.setItem(themeStorageKey, normalized); } catch (_) { /* armazenamento indisponível */ }
+            try { sessionStorage.setItem(themeStorageKey, normalized); } catch (_) { /* armazenamento indisponível */ }
         }
     }
 
@@ -4510,17 +4844,22 @@ html[data-theme="dark"] .style-2d .theme-toggle--desktop [data-theme-label] {
         });
     });
 
-    applyTheme(getPreferredTheme(), false);
+    // Primeira abertura: sempre claro, independentemente do sistema ou de
+    // uma preferência antiga salva no localStorage.
+    applyTheme('light', false);
 
-    const systemTheme = window.matchMedia?.('(prefers-color-scheme: dark)');
-    systemTheme?.addEventListener?.('change', (event) => {
-        try {
-            if (!localStorage.getItem(themeStorageKey)) {
-                applyTheme(event.matches ? 'dark' : 'light', false);
-            }
-        } catch (_) { /* armazenamento indisponível */ }
+    /* Detalhes expansíveis do projeto NetMap. */
+    document.querySelectorAll('.project-netmap__toggle').forEach((button) => {
+        button.addEventListener('click', () => {
+            const details = document.getElementById(button.getAttribute('aria-controls'));
+            if (!details) return;
+            const isOpen = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', String(!isOpen));
+            details.hidden = isOpen;
+            const label = button.querySelector('span');
+            if (label) label.textContent = isOpen ? 'Ver mais detalhes' : 'Ocultar detalhes';
+        });
     });
-
 
 })();
 </script>
