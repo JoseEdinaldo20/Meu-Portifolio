@@ -3303,6 +3303,50 @@ html[data-theme="dark"] .project-netmap__details li {
     }
 }
 
+
+/* Correção definitiva do overflow da animação em telas pequenas. */
+.hero__content,
+.hero__role,
+.hero__role-slot,
+.hero__role-initial,
+.hero__role-specialty,
+.hero__role-specialty > .role-text-part,
+.hero__role-specialty > .hero__role-strong {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+.hero__role-slot {
+    width: 100%;
+}
+.hero__role-specialty {
+    width: 100%;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+.hero__role-specialty .role-character {
+    white-space: normal;
+}
+@media (max-width: 860px) {
+    .hero__content {
+        width: 100%;
+    }
+    .hero__role[data-role-rotator] {
+        width: 100%;
+        max-width: calc(100vw - 32px);
+        overflow: hidden;
+    }
+    .hero__role-slot {
+        width: 100%;
+        overflow: hidden;
+    }
+    .hero__role-specialty {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        line-height: 1.45;
+    }
+}
+
 </style>
 </head>
 
@@ -4733,6 +4777,12 @@ html[data-theme="dark"] .project-netmap__details li {
             roleSpecialty.classList.add('is-visible', 'is-typing');
 
             const appendCharacter = (container, character) => {
+                // Espaços permanecem como texto normal para que o navegador
+                // possa quebrar a linha naturalmente no celular.
+                if (/\s/.test(character)) {
+                    container.appendChild(document.createTextNode(character));
+                    return;
+                }
                 const characterNode = document.createElement('span');
                 characterNode.className = 'role-character';
                 characterNode.textContent = character;
