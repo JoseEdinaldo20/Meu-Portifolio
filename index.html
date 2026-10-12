@@ -470,47 +470,6 @@ body {
     flex-shrink: 0;
 }
 
-.drawer-contacts {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: auto;
-    padding-top: 20px;
-    border-top: 1px solid var(--gray-100);
-}
-.drawer-contact-link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 14px;
-    background: var(--gray-50);
-    border: 1px solid var(--gray-100);
-    border-radius: 12px;
-    text-decoration: none;
-    color: var(--gray-600);
-    font-size: 13px;
-    font-weight: 500;
-    -webkit-tap-highlight-color: transparent;
-    transition: background 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease);
-}
-.drawer-contact-link:active,
-.drawer-contact-link:hover {
-    background: var(--brown-soft);
-    border-color: rgba(139,101,73,0.2);
-    color: var(--brown-700);
-}
-.drawer-contact-link svg {
-    width: 16px;
-    height: 16px;
-    color: var(--brown-500);
-    flex-shrink: 0;
-}
-.drawer-contact-link span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
 /* ============================================================
    LAYOUT
    ============================================================ */
@@ -2188,15 +2147,6 @@ footer::after {
     background: var(--paper-warm-2d);
     color: var(--ink-2d);
 }
-.style-2d .drawer-contacts {
-    border-top: var(--line-2d);
-    padding-top: 18px;
-}
-.style-2d .drawer-contact-link {
-    border: 1px solid rgba(59,40,26,.28);
-    border-radius: 7px;
-    background: var(--paper-2d);
-}
 .style-2d .language-switcher {
     margin-top: auto;
     padding-top: 22px;
@@ -2677,7 +2627,7 @@ html[data-theme="dark"] {
 
 .theme-toggle--mobile {
     width: 100%;
-    margin-top: 18px;
+    margin-top: 28px;
     justify-content: center;
 }
 
@@ -3144,8 +3094,7 @@ html[data-theme="dark"] .style-2d .mobile-drawer {
 }
 
 html[data-theme="dark"] .style-2d .mobile-drawer__panel,
-html[data-theme="dark"] .style-2d .drawer-header__close,
-html[data-theme="dark"] .style-2d .drawer-contact-link {
+html[data-theme="dark"] .style-2d .drawer-header__close {
     background: #211b17;
     color: #fffaf4;
     border-color: #c9a17b;
@@ -3890,28 +3839,6 @@ html[data-theme="dark"] .style-2d .lightbox__close:focus-visible {
                 <svg class="drawer-nav__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
             </a>
         </nav>
-
-        <div class="drawer-contacts">
-            <a href="mailto:almeidaedinaldo96@gmail.com" class="drawer-contact-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    <polyline points="22,6 12,13 2,6"/>
-                </svg>
-                <span>almeidaedinaldo96@gmail.com</span>
-            </a>
-            <a href="https://www.linkedin.com/in/edinaldo-almeida-b67194276" target="_blank" rel="noopener noreferrer" class="drawer-contact-link">
-                <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-                <span>LinkedIn</span>
-            </a>
-            <a href="tel:+5579920014962" class="drawer-contact-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-                <span>(79) 92001-4962</span>
-            </a>
-        </div>
 
         <div class="language-switcher" aria-label="Seleção de idioma">
             <p class="drawer-section-title" data-i18n="languageLabel">Idioma</p>
@@ -5054,7 +4981,7 @@ html[data-theme="dark"] .style-2d .lightbox__close:focus-visible {
     const hamburger = document.getElementById('hamburger');
     const mobileDrawer = document.getElementById('mobileDrawer');
     const drawerClose = document.getElementById('drawerClose');
-    const mobileLinks = document.querySelectorAll('.drawer-nav__link, .drawer-contact-link');
+    const mobileLinks = document.querySelectorAll('.drawer-nav__link');
 
     /* Download do currículo: desktop, Android e iOS */
     const downloadResume = document.getElementById('downloadResume');
