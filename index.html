@@ -1666,9 +1666,9 @@ footer::after {
     max-width: 100%;
     max-height: 80vh;
     display: block;
-    border-radius: var(--radius-lg);
-    box-shadow: 0 40px 100px rgba(0,0,0,0.6);
-    background: var(--white);
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
 }
 .lightbox__close {
     position: absolute;
@@ -1841,8 +1841,7 @@ footer::after {
     .footer-main { padding: 40px 0 30px; gap: 28px; }
 
     .lightbox { padding: 56px 12px 12px; }
-    .lightbox__image { border-radius: var(--radius-md); }
-}
+    }
 
 /* ============================================================
    REDUCED MOTION
@@ -2045,11 +2044,6 @@ footer::after {
 .style-2d .contact-panel__cta { box-shadow: 4px 4px 0 var(--ink-2d); }
 .style-2d .contact-item:hover { box-shadow: 4px 4px 0 var(--accent-2d); }
 
-.style-2d .lightbox__content {
-    border: var(--line-2d);
-    border-radius: 10px;
-    box-shadow: 10px 10px 0 var(--ink-2d);
-}
 .style-2d .lightbox__close { border: var(--line-2d); border-radius: 6px; }
 
 @media (max-width: 860px) {
@@ -3713,11 +3707,6 @@ html[data-theme="dark"] .style-2d .btn--download.is-downloading {
     background: #6f4e37;
     border-color: #d1a77d;
     box-shadow: 5px 5px 0 #0b0908, 0 0 0 4px rgba(209,167,125,.18) !important;
-}
-html[data-theme="dark"] .style-2d .lightbox__content {
-    background: #211b17;
-    border-color: #d1a77d;
-    box-shadow: 8px 8px 0 #0b0908;
 }
 html[data-theme="dark"] .style-2d .lightbox__close,
 html[data-theme="dark"] .style-2d .lightbox__close:hover,
