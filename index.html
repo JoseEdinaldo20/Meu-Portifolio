@@ -2245,6 +2245,14 @@ footer::after {
     line-height: 1.3;
     white-space: normal;
 }
+.style-2d .hero__actions .btn--download.is-download-started {
+    gap: 6px;
+    padding-inline: 18px;
+}
+.style-2d .hero__actions .btn--download.is-download-started #downloadResumeLabel {
+    max-width: none;
+    white-space: nowrap;
+}
 .style-2d .hero__actions .btn--download:hover,
 .style-2d .hero__actions .btn--download:active,
 .style-2d .hero__actions .btn--download:focus,
@@ -5118,6 +5126,7 @@ html[data-theme="dark"] .style-2d .lightbox__close:focus-visible {
                     document.body.appendChild(link);
                     link.click();
                     link.remove();
+                    downloadResume.classList.add('is-download-started');
                     downloadResumeLabel.textContent = currentLanguage.startsWith('en')
                         ? 'Download started!' : currentLanguage.startsWith('es')
                             ? '¡Descarga iniciada!' : 'Download iniciado!';
@@ -5137,6 +5146,7 @@ html[data-theme="dark"] .style-2d .lightbox__close:focus-visible {
 
             window.setTimeout(() => {
                 downloadResume.classList.remove('is-downloading');
+                downloadResume.classList.remove('is-download-started');
                 downloadResume.removeAttribute('aria-busy');
                 downloadResumeLabel.textContent = originalLabel;
                 downloadResumeBusy = false;
